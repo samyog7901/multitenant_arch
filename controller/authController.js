@@ -7,15 +7,15 @@ exports.renderRegisterForm = (req,res)=>{
 }
 
 exports.registerUser = async(req,res)=>{
-    const {username,email,password} = req.body
+    const {username, email, password} = req.body
     await users.create({
-     email,
      username,
+     email,
      password :  bcrypt.hashSync(password,8)
     })
  
     res.status(200).json({
-        message : "User created successfully"
+        message : "User registered successfully"
     })
  
  }
@@ -45,6 +45,7 @@ exports.loginUser = async (req,res)=>{
         const isPasswordMatched = bcrypt.compareSync(password,user[0].password)
         if(isPasswordMatched){
             const token = jwt.sign({id:user[0].id},'thisissecret')
+            res.cookie('token', token)
             res.status(200).json({
                 message: "User logged in successfully!",
                 token

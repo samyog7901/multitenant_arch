@@ -15,11 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       currentOrganizationNumber : {
         type: DataTypes.INTEGER,
         allowNull:true
-      },
-
-    
-
-    
+      }
     });
-    return User;
+    return User
   };

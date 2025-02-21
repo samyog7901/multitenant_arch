@@ -21,8 +21,8 @@ app.get("/",(req,res)=>{
     res.render("chat")
 })
 
-const server = app.listen(4000,()=>{
-    console.log('server is running on port 4000')
+const server = app.listen(3000,()=>{
+    console.log('server is running on port 3000')
 })
 const io = new Server(server)
 
